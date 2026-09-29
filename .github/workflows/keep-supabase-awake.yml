@@ -1,0 +1,16 @@
+   name: Keep Supabase awake
+
+   on:
+     schedule:
+       - cron: "0 7 */3 * *"
+     workflow_dispatch:
+
+   jobs:
+     ping:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Read one row from the site database
+           run: |
+             curl -fsS "https://kjaarxrxdmcwkazfppdc.supabase.co/rest/v1/docs?select=id&limit=1" \
+               -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqYWFyeHJ4ZG1jd2themZwcGRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzMzU3MjAsImV4cCI6MjEwNTkxMTcyMH0.j5vF7BsJ0Zj9uKdmam7qPwYPZ7JukLtinAnhxANuiwQ" \
+               -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqYWFyeHJ4ZG1jd2themZwcGRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzMzU3MjAsImV4cCI6MjEwNTkxMTcyMH0.j5vF7BsJ0Zj9uKdmam7qPwYPZ7JukLtinAnhxANuiwQ"
